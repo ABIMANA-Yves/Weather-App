@@ -1,0 +1,236 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('img/weatherbg.jpeg');
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    background-color: #e6f0fa;
+}
+
+.container {
+    width: 500px;
+    position: relative;
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    padding: 30px;
+    height: 120px;
+    background: rgba(50, 60, 100, 0.5);
+    transition: height 0.6s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    height: 65px;
+    display: flex;
+    align-items: center;
+}
+
+.search-box input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    outline: none;
+    border-radius: 12px;
+    font-size: 24px;
+    color: #fff;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding: 0 50px 0 45px;
+}
+
+.search-box input::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: capitalize;
+}
+
+.search-box button {
+    position: absolute;
+    right: 0;
+    width: 50px;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 30px;
+    color: #fff;
+    padding: 0 45px 0 5px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.search-box button:hover {
+    color: #a3cfff;
+}
+
+.search-box i {
+    position: absolute;
+    left: 15px;
+    font-size: 30px;
+    color: #fff;
+}
+
+.loading {
+    text-align: center;
+    font-size: 20px;
+    color: #a3cfff;
+    margin: 25px 0;
+}
+
+.error-message {
+    text-align: center;
+    font-size: 18px;
+    color: #ff6b6b;
+    margin: 15px 0;
+}
+
+.weather-box {
+    text-align: center;
+    margin: 50px 0;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.weather-box.active {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.weather-box img {
+    width: 70%;
+    animation: weatherPulse 2s infinite ease-in-out;
+}
+
+@keyframes weatherPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.weather-box .temperature {
+    position: relative;
+    font-size: 72px;
+    line-height: 1;
+    font-weight: 700;
+    margin: 25px 0 10px -35px;
+    color: #fff;
+}
+
+.weather-box .temperature span {
+    position: absolute;
+    font-size: 28px;
+    margin-left: 5px;
+}
+
+.weather-box .description {
+    font-size: 24px;
+    font-weight: 500;
+    text-transform: capitalize;
+    color: #e6f0fa;
+}
+
+.weather-details {
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    width: 100%;
+    padding: 0 30px;
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.weather-details.active {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.weather-details .humidity,
+.weather-details .wind {
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+.weather-details .humidity {
+    padding-left: 30px;
+    justify-content: flex-start;
+}
+
+.weather-details .wind {
+    padding-right: 30px;
+    justify-content: flex-end;
+}
+
+.weather-details i {
+    font-size: 64px;
+    margin-right: 15px;
+    color: #a3cfff;
+}
+
+.weather-details span {
+    display: inline-block;
+    font-size: 26px;
+    font-weight: 500;
+    color: #fff;
+}
+
+.weather-details p {
+    font-size: 16px;
+    font-weight: 500;
+    color: #e6f0fa;
+}
+
+.not-found {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin-top: 130px;
+    margin-left: 70px;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.not-found.active {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.not-found img {
+    width: 70%;
+}
+
+.not-found p {
+    font-size: 24px;
+    font-weight: 500;
+    margin-top: 15px;
+    color: #ff6b6b;
+}
+
+.city-hide {
+    display: none;
+}
